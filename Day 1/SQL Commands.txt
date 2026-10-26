@@ -1,0 +1,67 @@
+CREATE DATABASE HospitalDB;
+USE HospitalDB;
+
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY AUTO_INCREMENT,
+    DepartmentName VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE Doctors (
+    DoctorID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(30) NOT NULL,
+    LastName VARCHAR(30),
+    Speciality VARCHAR(10),
+    ContactNumber bigint(10),
+    Email VARCHAR(20),
+    DepartmentID INT,
+
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+CREATE TABLE Patients (
+    PatientID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(30) NOT NULL,
+    LastName VARCHAR(20),
+    DateOfBirth DATE,
+    Gender VARCHAR(10),
+    Address VARCHAR(100),
+    ContactNumber VARCHAR(15),
+    Email VARCHAR(100)
+);
+
+CREATE TABLE Appointments (
+    AppointmentID INT PRIMARY KEY AUTO_INCREMENT,
+    AppointmentDate DATE NOT NULL,
+    AppointmentTime TIME NOT NULL,
+    PatientID INT NOT NULL,
+    DoctorID INT NOT NULL,
+
+    FOREIGN KEY (PatientID) REFERENCES Patients(PatientID),
+
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(DoctorID)
+);
+
+CREATE TABLE Treatments (
+    TreatmentID INT PRIMARY KEY AUTO_INCREMENT,
+    TreatmentDate DATE NOT NULL,
+    TreatmentDescription VARCHAR(255),
+    TreatmentCost DECIMAL(10,2),
+    AppointmentID INT NOT NULL,
+
+    FOREIGN KEY (AppointmentID) REFERENCES Appointments(AppointmentID)
+);
+
+alter table Treatments modify column TreatmentDescription varchar(50);
+alter table Treatments modify column TreatmentCost int not null;
+
+CREATE TABLE MedicalRecords (
+    RecordID INT PRIMARY KEY AUTO_INCREMENT,
+    RecordDate DATE NOT NULL,
+    RecordDetails TEXT,
+    PatientID INT NOT NULL,
+    DoctorID INT NOT NULL,
+
+    FOREIGN KEY (PatientID) REFERENCES Patients(PatientID),
+
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(DoctorID)
+);
