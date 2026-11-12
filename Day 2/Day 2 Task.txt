@@ -1,0 +1,29 @@
+E-commerce
+
+Problem Statement 
+
+The company faces the following database requirements:
+
+1. Every customer and product must have a unique identification number generated automatically.
+
+2. Customer email addresses must be unique.
+
+3. Customer Information Validation: Customer names and email addresses must be mandatory 
+
+3. Important fields must not accept NULL values.
+
+4. Order status, payment status,stock quantity, and other fields should have default values.
+
+5. Orders must be linked to valid customer
+ and order items must be linked to valid orders and products.
+e 101
+
+6. The total price of each order item must be calculated automatically based on quantity and unit price.
+7. The company wants to demonstrate the use of the MD5() function to generate a hash value.
+
+8. Customer Identification: Every customer must have a unique identification number generated automatically using the AUTO_INCREMENT attribute. 
+
+9. Customer Information Validation: Customer names and email addresses must be mandatory
+   
+10. Default Values: The database must automatically assign 
+    appropriate default values for product prices, stock quantities, order status, payment status, order dates, and order-item quantities wherever applicable.
