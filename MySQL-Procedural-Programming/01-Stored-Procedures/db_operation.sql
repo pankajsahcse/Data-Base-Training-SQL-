@@ -23,8 +23,9 @@ END $
 
 DELIMITER ;
 
-
+/*
 CALL deleteEmp(101);
+*/
 
 
 
@@ -32,11 +33,10 @@ CALL deleteEmp(101);
 
 
 
+/* Method 2 For Deleting the Employee by PROCEDURE */
+DROP PROCEDURE if EXISTS delete_emp;
 
-
-
-
-DELIMITER //
+DELIMITER $
 
 CREATE PROCEDURE delete_emp(IN p_empid INT)
 BEGIN
@@ -48,6 +48,10 @@ BEGIN
         SELECT 'Employee Not Found' AS message;
     END IF;
 
-END //
+END $
 
 DELIMITER ;
+
+/*
+CALL deleteEmp(101);
+*/
