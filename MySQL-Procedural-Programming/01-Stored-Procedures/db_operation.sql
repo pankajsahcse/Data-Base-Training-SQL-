@@ -55,3 +55,52 @@ DELIMITER ;
 /*
 CALL deleteEmp(101);
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Update Salary using PROCEDURE */
+
+DROP PROCEDURE IF EXISTS updateEmpSalary;
+
+DELIMITER $
+
+CREATE PROCEDURE updateEmpSalary(
+    IN p_empid INT,
+    IN p_salary INT
+)
+BEGIN
+
+    UPDATE emp
+    SET salary = p_salary
+    WHERE empid = p_empid;
+
+    IF ROW_COUNT() > 0 THEN
+
+        SELECT 'Salary Updated Successfully' AS message;
+
+    ELSE
+
+        SELECT 'Employee Not Found or Salary Unchanged' AS message;
+
+    END IF;
+
+END $
+
+DELIMITER ;
+
+/*
+CALL updateEmpSalary(101, 25000);
+*/
+
+
+
